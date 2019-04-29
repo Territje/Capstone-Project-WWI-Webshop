@@ -1,3 +1,7 @@
+# Hosted version
+
+You can see a live demo at https://on3.synology.me/terri/1/Capstone/index.html#/home
+
 # Capstone
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
