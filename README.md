@@ -6,9 +6,14 @@ You can see a live demo at https://on3.synology.me/terri/1/Capstone/index.html
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
 
-## Development server
+# Development server
 
 Download the files, run `npm i` then run `ng serve` for a dev server. Navigate to `http://localhost:8080/`. The app will automatically reload if you change any of the source files.
+
+## Grading Rubric Requirement
+
+Comments are placed within the code above the area where the element is implemented.
+These take the form e.g. <!-- GR 1.4 --> or `//GR 1.4` which corresponds to the page and row in the Grading Rubric document.
 
 ## Build
 
