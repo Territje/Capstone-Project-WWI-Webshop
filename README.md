@@ -1,6 +1,6 @@
 # Hosted version
 
-You can see a live demo at https://on3.synology.me/terri/1/Capstone/index.html#/home
+You can see a live demo at https://on3.synology.me/terri/1/Capstone/index.html
 
 # Capstone
 
