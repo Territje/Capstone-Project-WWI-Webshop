@@ -11,7 +11,7 @@ Download the files, run `npm i` then run `ng serve` for a dev server. Navigate t
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Hosted version
+## Live demo
 
 You can see a live demo at https://on3.synology.me/terri/1/Capstone/index.html
 
