@@ -13,7 +13,7 @@ Download the files, run `npm i` then run `ng serve` for a dev server. Navigate t
 ## Grading Rubric Requirement
 
 Comments are placed within the code above the area where the element is implemented.
-These take the form e.g. <!-- GR 1.4 --> or `//GR 1.4` which corresponds to the page and row in the Grading Rubric document.
+These take the form e.g. `<!-- GR 1.4 -->` or `//GR 1.4` which corresponds to the page and row in the Grading Rubric document.
 
 ## Build
 
