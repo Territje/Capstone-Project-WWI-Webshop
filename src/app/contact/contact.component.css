@@ -1,0 +1,71 @@
+.bigDiv {
+    display: flex;
+    flex-direction: row;
+    padding: 1em;
+    margin-top: 2%;
+}
+
+.form {
+    display: flex;
+    justify-self: flex-start;
+    min-width: 30em;
+    padding: 1em;
+    margin-top: 20px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-self: flex-end;
+    flex-grow: 1;
+    padding: 1em;
+    margin-top: 30px;
+}
+
+.form form {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+}
+
+.form-group,
+.custom-select {
+    display: flex;
+    padding: 0.6em;
+    width: inherit;
+    margin: 0px;
+}
+
+textarea,
+input,
+select {
+    border-color: aliceblue;
+    border-radius: 5px;
+    flex-grow: 1;
+    padding: 1em 2em;
+    outline-color: slategrey;
+}
+
+textarea,
+select {
+    border-width: 2px;
+    border-style: inset;
+}
+
+.formElelment {
+    position: relative;
+}
+
+a {
+    padding: 1em;
+}
+
+.validationWarning {
+    color: red;
+    font-weight: 600;
+    position: absolute;
+    right: 7%;
+    top: 37%;
+    display: none;
+}

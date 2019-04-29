@@ -1,0 +1,67 @@
+.back {
+    margin: 1.5em;
+    margin-top: 60px;
+    padding: 0.7em;
+    border-radius: 5px;
+    background-color: lightblue;
+    color: slategray;
+    display: inline-block;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.back:hover {
+    font-weight: 700;
+}
+
+img {
+    max-width: 20em;
+    max-height: 20em;
+}
+
+.bigDiv {
+    margin: 2em;
+    display: flex;
+    justify-content: space-around;
+}
+
+.imageDiv {
+    display: flex;
+    align-items: center;
+}
+
+.detailsDiv {
+    margin: 2em;
+    display: flex;
+    flex-direction: column;
+}
+
+.detailsDiv div {
+    margin-top: 2em;
+}
+
+.prodadd {
+    display: flex;
+    justify-content: center;
+}
+
+.btnAddToCartart {
+    background-color: lightblue; 
+    border-radius: 5px;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.btnAddToCartart:hover {
+    font-weight: 700;
+}
+
+input {
+    border-color: aliceblue;
+    border-radius: 5px;
+}
+
+.qtyInput {
+    width: 5em;
+}

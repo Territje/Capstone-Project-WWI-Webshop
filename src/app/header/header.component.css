@@ -1,0 +1,60 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    padding: 1%;
+    background-color: slategrey;
+    color: aliceblue;
+    white-space: nowrap;
+    z-index: 100;
+}
+
+a {
+    color: aliceblue;
+    text-decoration: none;
+    transition: all .2s ease-in-out;
+}
+
+a:hover {
+    transform: scale(1.15);
+}
+
+.goHome {
+    padding-left: 2%;
+}
+
+.goShop {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 2%;
+}
+
+.shopAll,
+.checkout {
+    justify-self: flex-end;
+    padding-right: 20%;
+}
+
+img {
+    height: 20px;
+    color: white;
+    transition: all .2s ease-in-out;
+}
+
+img:hover {
+    transform: scale(1.3);
+}
+
+.badge {
+    position: relative;
+    margin-top: -6px;
+    margin-left: 4px;
+    padding: 1px 6px;
+    border-radius: 100px;
+    background: -webkit-linear-gradient(top, #FF6969 0%,#ff0000 100%);
+    font: bold 11px/17px "Helvetica Neue", sans-serif;
+    color: white;
+    text-decoration: none;
+}

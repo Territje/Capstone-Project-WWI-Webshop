@@ -1,0 +1,141 @@
+.topBar {
+    position: relative;
+    display: inline-block;
+    width: 98%;
+    padding: 1em;
+    margin-top: 1em;
+    color: slategray;
+}
+
+.big-box {
+    display: flex;
+}
+
+.nav-menu {
+    margin-top: 6em;
+    min-width: 23em;
+    max-width: 23em;
+    white-space: nowrap;
+}
+
+.results {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 3em;
+    width: 100%;
+}
+
+.select {
+    width: 10em;
+    border-color: aliceblue;
+    border-width: 2px;
+    border-radius: 5px;
+    border-style: inset;
+}
+
+.subcattitle {
+    width: 20em;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 20em;
+    height: 20em;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 5px;
+    background-color: #FAFAFA;
+    -webkit-box-shadow: 6px 6px 13px 1px rgba(0,0,0,0.34);
+    -moz-box-shadow: 6px 6px 13px 1px rgba(0,0,0,0.34);
+    box-shadow: 6px 6px 13px 1px rgba(0,0,0,0.34);
+    transition: all .2s ease-in-out;
+}
+
+.product:hover {
+    transform: scale(1.1);
+}
+
+.prodtitle {
+    display: flex;
+    justify-content: space-around;
+}
+
+.prodimg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    max-width: 7em;
+    max-height: 7em;
+}
+
+.cat {
+    padding-bottom: 2em;
+}
+
+.subcat {
+    padding-top: 1em;
+}
+
+.prodadd {
+    display: flex;
+    justify-content: center;
+}
+
+.price {
+    font-weight: 600;
+    font-size: larger;
+}
+
+.btnAddToCartart {
+    background-color: lightblue; 
+    border-radius: 5px;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.btnAddToCartart:hover {
+    font-weight: 700;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+.filters {
+    display: flex;
+    float: right;
+}
+.showing {
+    display: inline-block;
+}
+
+li {
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.selectedItem {
+    background-color: aquamarine;
+}
+
+.floatRight {
+     width: 150px;
+     float: right;
+}
+
+.container {
+    font-weight: 300;
+}

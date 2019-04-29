@@ -1,0 +1,19 @@
+<!-- GR 8.1: (see css) The footer bar should always be at the bottom of the page -->
+<nav class="footer">
+
+    <!-- GR 8.2: User shall see a link to the home page -->
+    <!-- GR 8.5: Clicking the home page link should take the user to the home page -->
+    <a class="goHome" [routerLink]=" ['./home'] ">&copy; WWI Store 2019</a>
+
+    <span class="corporate">
+        <!-- GR 8.3: User shall see a link to the about page -->
+        <!-- GR 8.6: Clicking the home page link should take the user to the about page -->
+        <a class="about" [routerLink]=" ['./about'] ">About</a>
+
+        <!-- GR 8.4: User shall see a link to the contact page -->
+        <!-- GR 8.7: Clicking the home page link should take the user to the contact page -->
+        <a class="contact" [routerLink]=" ['./contact'] ">Contact</a>
+
+    </span>
+
+</nav>

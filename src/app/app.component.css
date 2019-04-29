@@ -1,0 +1,4 @@
+.bigDiv {
+    display: flex;
+    flex-direction: column;
+}

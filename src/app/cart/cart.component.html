@@ -1,0 +1,134 @@
+<div class="bigDiv">
+
+  <div class="cartBlock">  
+        
+    <!-- GR 4.1: The user should a table displaying the product image, name, unit price, quantity as an input field, total cost, and a remove button for each product in the shopping cart -->
+    <table class="item-list"> 
+      
+      <thead class="list-header">
+        <tr class="list-row">
+          <th>Image</th>
+          <th>Name</th>  
+          <th>Unit Price</th>
+          <th class="rightAlign">Quantity</th>
+          <th class="rightAlign">Cost</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      
+      <tbody >
+        <tr class="list-row" *ngFor="let _cartItem of _dataService.cartItems">
+          <td class="list-row-column">
+            <a [routerLink]="['/product']" [queryParams]="{name:_cartItem.name}">
+              <img [src]="_cartItem.imagelink" alt="">
+            </a>
+          </td>  
+          <td>{{ _cartItem.name }}</td>   
+          <td class="rightAlign">{{ _cartItem.price | currency: 'USD':symbol }}</td>
+          <!-- GR 4.9: The cost column in the table should update if the quantity input field is changed -->
+          <td><input class="qtyInput rightAlign" type="number"  min="0" [value]="_cartItem.qty" #t (change)="_dataService.qtyChange(_cartItem, t.value)" placeholder="Quantity"></td>
+          <td class="rightAlign">{{ _cartItem.price * _cartItem.qty | currency: 'USD' }}</td>
+          <!-- GR 4.8: The remove button should remove an item from the shopping cart -->
+          <td class="prod-remove" (click)="_dataService.removeFromCart(_cartItem)">X</td>
+        </tr>
+      </tbody>
+      
+      <tfoot>
+        <tr class="list-row list-header list-footer">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="rightAlign">Subtotal</td>
+          <!-- GR 4.7: The cost details section should update if any items are removed from the shopping cart of if any of the item quantities are updated -->
+          <!-- GR 4.9: The cost column in the table should update if the quantity input field is changed -->
+          <td class="rightAlign">{{ _dataService.cartSubTotal()  | currency: 'USD' }}</td>
+          <td></td>
+        </tr>
+      </tfoot>
+
+    </table>
+  </div>
+
+  <div class="shippingBlock">
+
+    <div class="cart-total">
+
+      <!-- GR 4.2: The user should see a form labeled “Enter Shipping Details” that has text input fields for the users name, address, city, and phone number.
+        These input fields should have placeholders that show what they represent -->
+      <div class="total-header">Please enter your shipping details</div>
+      
+      <form class="form-horizontal" [formGroup]="form">
+      <div class="shippingRow">
+        <div class="total-label"> Name </div>
+        <div class="validBlock">
+          <!-- GR 4.6 The form should showvalidation errors if the form isn’t filled out correctly and the checkout button is pressed -->
+          <div class="validationWarning">required</div>
+          <input class="shippingInput" type="text" id="name" placeholder="Name" name="name"  autocomplete="name">
+        </div>
+      </div>
+
+      <div class="shippingRow">
+        <div class="total-label"> Address </div>
+        <div class="validBlock">
+          <!-- GR 4.6 The form should showvalidation errors if the form isn’t filled out correctly and the checkout button is pressed -->
+          <div class="validationWarning">required</div>
+          <input class="shippingInput" type="text" id="address" placeholder="Address" name="street-address" autocomplete="street-address">
+        </div>
+      </div>
+
+      <div class="shippingRow">
+        <div class="total-label"> City </div>
+        <div class="validBlock">
+          <!-- GR 4.6 The form should showvalidation errors if the form isn’t filled out correctly and the checkout button is pressed -->
+          <div class="validationWarning">required</div>
+          <input class="shippingInput" type="text" id="zity" placeholder="City" name="address-line2" autocomplete="address-level1">
+        </div>
+      </div>
+
+      <div class="shippingRow">
+        <div class="total-label"> Phone number </div>
+        <div class="validBlock">
+          <!-- GR 4.6 The form should showvalidation errors if the form isn’t filled out correctly and the checkout button is pressed -->
+          <div class="validationWarning">required</div>
+          <input class="shippingInput" type="tel" id="phone" placeholder="Phone Number" name="phone" autocomplete="tel" >
+        </div>
+      </div>
+      </form>
+
+    </div>
+
+    <div class="cart-total">
+      <!-- GR 4.3: The user should see a section showing the subtotal cost of all the items in the shopping cart, the shipping cost, the tax cost, and a total cost of all of the items in the shipping cost -->
+      <!-- GR 4.7: The cost details section should update if any items are removed from the shopping cart of if any of the item quantities are updated -->
+      <!-- GR 4.9: The cost column in the table should update if the quantity input field is changed -->
+      <div class="total-header">Total costs</div>      
+      
+      <table class="totalList">
+        <tr class="totalRow list-row">
+          <td class="leftAlign"> Subtotal </td>
+          <td class="rightAlign"> {{ _dataService.cartSubTotal()  | currency: 'USD' }} </td>
+        </tr>
+        <tr class="totalRow list-row">
+          <td class="leftAlign"> Shipping </td>
+          <td class="rightAlign"> {{ 10 | currency: 'USD' }} </td>
+        </tr>
+        <tr class="totalRow list-row">
+          <td class="leftAlign"> Tax (10%) </td>
+          <td class="rightAlign"> {{ _dataService.cartSubTotal() / 10  | currency: 'USD'}} </td>
+        </tr>
+        <tr class="totalFooter totalRow list-row list-footer">
+          <td class="leftAlign"> Total </td>
+          <td class="rightAlign"> {{ ((_dataService.cartSubTotal() * 1.1) + 10)  | currency: 'USD' }} </td>
+        </tr>
+      </table>
+
+      <!-- GR 4.4: The user should see a checkout button -->
+      <!-- GR 4.5: The checkout button should create an alert based on the users shipping details and total cost -->
+      <!-- GR 4.6 The form should showvalidation errors if the form isn’t filled out correctly and the checkout button is pressed -->
+      <div class="btn-checkout" (click)="submitAlert()">Checkout</div>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,38 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    padding: 1%;
+    background-color: #bac5d6;
+    color: aliceblue;
+    white-space: nowrap;
+}
+
+a {
+    color: aliceblue;
+    text-decoration: none;
+    transition: all .2s ease-in-out;
+}
+
+a:hover {
+    transform: scale(1.15);
+}
+
+.goHome {
+    padding-left: 2%;
+}
+
+.corporate {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 2%;
+}
+
+.about,
+.contact {
+    justify-self: flex-end;
+    padding-right: 20%;
+    min-width: 55%;
+}

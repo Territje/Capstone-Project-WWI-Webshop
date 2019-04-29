@@ -1,0 +1,36 @@
+<!-- GR 3.9: The user should a button labeled Back" -->
+<!-- GR 3.11 Clicking the “Back” button should take the user back to where they came from, whether it was the Shopping page or the Product Page -->
+<a class="back" *ngIf="_item" href="javascript: history.back()">Back</a>
+
+<div *ngIf="_item" class="bigDiv">
+
+  <div class="imageDiv">
+    <!-- GR 3.2: The user should an image of the selected product -->
+    <img [src]="_item.imagelink" alt="plaatje komt....">
+  </div>
+
+  <div class="detailsDiv">
+    <!-- GR 3.1: The user should the name of the selected product -->
+    <h1>{{ _item.name | uppercase }}</h1>
+    <!-- GR 3.3: The user should the rating of the selected product -->
+    <h2>{{ _item.rating }}/5 ⭐</h2>
+    <!-- GR 3.5: The user should the price of the selected product -->
+    <div>{{ _item.price | currency: 'USD':symbol}}</div>
+    <!-- GR 3.4: The user should the number of items in stock of the selected product -->
+    <div>{{ _item.stock }} <span> in stock</span></div>
+    <!-- GR 3.6: The user should a description of the selected product -->
+    <div>{{ _item.description }}</div>
+    <!-- GR 3.8: The user should an inputfield labeled “Qty” -->
+    <div><input class="qtyInput" type="number"  min="0" #t (change)="_qty = t.value" [value]="_qty" ></div>
+    <div class="prodadd">
+      <!-- GR 3.7: The user should a button labeled “Add" --> 
+      <!-- GR 3.10: Clicking the “Add” button should add the number of units specified in the “Qty” input field of the selected product to the shopping cart --> 
+      <div class="btnAddToCartart" (click)="_dataService.addToCart(_item, _qty)">
+          Add
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #noData>No Data Available</ng-template>

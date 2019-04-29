@@ -1,0 +1,100 @@
+
+
+<div class="big-box">
+
+    <!-- GR 2.6: The user shall see a category menu that displays all of the available shopping categories -->
+    <div class="nav-menu">
+        <ul *ngIf="_dataService.alles && _dataService.alles.categories">
+            <!-- GR 2.12: Clicking on a categoryname in the category menu should toggle a dropdown of the available subcategories within that category -->
+            <li class="cat" *ngFor="let _cat of _dataService.alles.categories" (click)="setCurrentCategory(_cat)" ><span [ngStyle]="{ 'font-weight' : currentCat && (_cat.category == currentCat.category) ?  '600': 'inherit', 'color' : currentCat && (_cat.category == currentCat.category) ?  'grey': 'inherit' }">{{ _cat.category }}</span>    
+                <ul *ngIf="_cat && currentCat && _cat.category == currentCat.category">
+                    <!-- GR 2.13: Clicking on a subcategory should repopulate the grid of products with items from the subcategory that was just clicked -->
+                    <li class="subcat" *ngFor="let _subcat of _cat.subcategories" (click)="showProducts(_subcat,$event)" [ngStyle]="{ 'font-weight' : currentSubCat && (_subcat.name == currentSubCat.name) ?  '600': 'inherit' , 'color' : currentSubCat && (_subcat.name == currentSubCat.name) ?  'grey': 'inherit' }">{{ _subcat.name }}
+                    </li>
+                </ul>    
+            </li>
+        </ul>
+    </div>
+
+
+
+    <div class="results" >
+
+        <div class="topBar">
+            <!-- GR 2.1: The user shall see a controls bar -->
+            <!-- GR 2.2: The user shall see a section in the controls bar that displays the selected category name -->
+            <!-- GR 2.3: The user shall see a section in the controls bar that displays the number of items shown out of the total number of items in the selected category -->
+            <!-- GR 2.14: Clicking on a subcategory should change the name of the selected category in the controls bar -->
+            <!-- GR 2.15: The section of the controls bar that displays the number of items shown out of the total number of items in the selected category should update 
+                whenever a new subcategory is selected or whenever the “In Stock Only” switch is toggled -->
+            <div class="showing" *ngIf="(currentCat && currentCat.subcategories) || (currentSubCat && currentSubCat.items)" > {{ showingLine }}</div>
+            <div class="floatRight">
+                <!-- GR 2.4: The user shall see a toggle switch labeled “In Stock Only” in the controls bar -->
+                <label class="container">In stock only
+                    <input type="checkbox" [checked]="stock" (change)="onlyStock(!stock)">
+                </label>
+            </div>
+            <div class="floatRight">
+                <!-- GR 2.5: The user shall see a dropdown list labeled “Sort By” that has the following options: (None, Price, Alphabetical, Rating) in the controls bar -->
+                <!-- GR 2.20: Changing the selected sorting method should reorder the products in the grid -->
+                <select class="select" #t (change)="selectSort(t.value)">
+                    <option value="0">Sort by...</option>
+                    <option value="1">price</option>
+                    <option value="2">name (a-z)</option>
+                    <option value="3">rating</option>
+                </select>
+            </div>
+        </div>
+
+        <ng-container *ngIf="currentCat && !currentSubCat">
+            <!-- GR 2.12: Clicking on a categoryname in the category menu should toggle a dropdown of the available subcategories within that category -->
+            <!-- GR 2.13: Clicking on a subcategory should repopulate the grid of products with items from the subcategory that was just clicked -->
+            <div class="product" *ngFor="let _subcat of currentCat.subcategories" (click)="showProducts(_subcat,$event)">
+                <div class="subcattitle">{{ _subcat.name }}</div>
+            </div>
+        </ng-container>
+
+        <!-- GR 2.7: The user shall see a grid that is populated with the products ofthe selected category -->   
+        <ng-container *ngIf="currentSubCat && currentSubCat.items">
+            <!-- GR 2.19: If the user clicks on a product name within a grid cell, they should be taken to a product page that is populated with the details of the clicked product -->
+            <ng-container *ngFor="let _item of currentSubCat.items" (click)="_dataService.setCurrentItem(_item)">
+                <!-- GR 2.16: If the “In Stock Only” toggle is checked, only items that are in stock should be shown in the products grid -->
+                <div class="product" *ngIf="(_item.stock > 0) || !stock">
+                    <div class="prodtitle">
+                        <!-- GR 2.8: Each grid cell shall have the name of the product displayed -->
+                        <div>
+                            <!-- GR 2.19: If the user clicks on a product name within a grid cell, they should be taken to a product page that is populated with the details of the clicked product -->
+                            <a [routerLink]="['/product']" [queryParams]="{name:_item.name}">
+                                {{ _item.name }}
+                            </a>
+                        </div>  
+                        <!-- GR 2.9: Each grid cell shall have the price of the product displayed -->
+                        <div class="price">
+                            {{ _item.price | currency: 'USD':symbol}}
+                        </div>
+                    </div>
+                    <!-- GR 2.10: Each grid cell shall have an image of the product displayed -->
+                    <div class="prodimg">
+                        <!-- GR 2.18: If the user clicks on a product image within a grid cell, they should be taken to a product page that is populated with the details of the clicked product -->
+                        <a [routerLink]="['/product']" [queryParams]="{name:_item.name}">
+                            <img [src]="_item.imagelink" [alt]="_item.name">
+                        </a>
+                    </div>
+                    <div class="prodtitle"> <!-- *ngFor="let i of _item.rating.val" -->
+                        {{ _item.rating }}/5 ⭐ 
+                    </div>
+                    <!-- GR 2.11: Each grid cell shall have a button labeled “Add" -->
+                    <div class="prodadd">
+                        <!-- GR 2.17: Clicking on the “Add” button inside a grid cell should add 1 unit of the  associated product to the shoppingcart -->
+                        <div class="btnAddToCartart" (click)="_dataService.addToCart(_item, 1)">
+                            Add
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container> 
+   
+    </div>
+
+</div> 
+

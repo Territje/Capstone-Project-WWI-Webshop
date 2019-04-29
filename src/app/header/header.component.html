@@ -1,0 +1,22 @@
+<!-- GR 7.4: (see css) The header bar should always be at the top of the page -->
+<nav class="header">
+
+  <!-- GR 7.1: User shall see a link to the home page -->
+  <!-- GR 7.5: Clicking the home page link should take the user to the home page -->
+  <a class="goHome" [routerLink]="['/home']">WWI Store</a>
+
+  <span class="goShop">
+    <!-- GR 7.2: User shall see a link to the shopping page -->
+    <!-- GR 7.6: Clicking the shopping page link should take the user to the shopping page -->
+    <a class="shopAll" [routerLink]="['./shopping']">Shop All</a>
+
+    <!-- GR 7.3: User shall see a link to the cart page -->
+    <!-- GR 7.7: Clicking the cart page link should take the user to the cart page -->
+    <a class="checkout" [routerLink]="['./cart']">
+      <img src="cart.png" alt="Cart">
+      <span *ngIf="_dataService.totalItemsInCart() != '0'" class="badge">{{ _dataService.totalItemsInCart() }}</span>
+    </a>
+    
+  </span>
+
+</nav>
